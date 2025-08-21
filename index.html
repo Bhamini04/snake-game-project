@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake X — Responsive</title>
+  <link rel="icon" type="image/x-icon" href="static/favicon.ico" />
+  <link rel="stylesheet" href="snake.css" />
+</head>
+<body>
+  <div class="app" id="app" data-theme="neon">
+    <!-- Left: Board -->
+    <div class="board-wrap">
+      <div class="topbar">
+        <div class="stats">
+          <div class="badge" id="score"><small>Score</small>0</div>
+          <div class="badge" id="hi"><small>Best</small>0</div>
+          <div class="badge" id="mode"><small>Mode</small>Classic</div>
+          <div class="badge" id="speed"><small>Speed</small>10</div>
+          <div class="badge" id="state"><small>Status</small>Ready</div>
+        </div>
+        <div class="actions" style="display:flex; gap:8px">
+          <button class="btn-ghost" id="btn-theme">Theme</button>
+          <button class="btn-accent" id="btn-pause">Play ▷</button>
+          <button class="btn-danger" id="btn-restart">Restart ↻</button>
+        </div>
+      </div>
+      <canvas id="board" width="800" height="800" aria-label="Snake game board" role="img"></canvas>
+
+      <div class="mobile-pad" aria-hidden="false">
+        <div class="pad-grid">
+          <div></div>
+          <button data-dir="up">▲</button>
+          <div></div>
+          <button data-dir="left">◀</button>
+          <button id="btn-pause-mobile">⏯</button>
+          <button data-dir="right">▶</button>
+          <div></div>
+          <button data-dir="down">▼</button>
+          <div></div>
+        </div>
+      </div>
+
+      <div class="footer">Controls: Arrow keys / WASD • Space = Pause • R = Restart • G = Toggle Grid • O = Toggle Obstacles • W = Wrap Walls</div>
+    </div>
+
+    <!-- Right: Settings -->
+    <aside class="panel">
+      <h2>Settings</h2>
+      <div class="controls">
+        <div class="row">
+          <label>Game Mode</label>
+          <select id="sel-mode" title="Game mode">
+            <option value="classic">Classic (crash on walls)</option>
+            <option value="wrap">Wrap Walls</option>
+            <option value="obstacles">Obstacles</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>Speed <span class="pill" id="speedVal">10</span></label>
+          <input type="range" min="5" max="25" value="10" id="rng-speed" />
+        </div>
+        <div class="row">
+          <label>Grid size <span class="pill" id="gridVal">24</span></label>
+          <input type="range" min="12" max="40" value="24" id="rng-grid" />
+        </div>
+        <div class="row">
+          <label>Obstacle density <span class="pill" id="obsVal">8%</span></label>
+          <input type="range" min="0" max="25" value="8" id="rng-obs" />
+        </div>
+        <div class="grid">
+          <button id="btn-grid" class="btn-ghost">Toggle Grid</button>
+          <button id="btn-sound" class="btn-ghost">Sound: On</button>
+          <button id="btn-vibe" class="btn-ghost">Vibrate: On</button>
+          <button id="btn-clear" class="btn-ghost">Clear High Scores</button>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:var(--good)"></span>Food</span>
+          <span><span class="dot" style="background:#f59e0b"></span>Bonus</span>
+          <span><span class="dot" style="background:var(--bad)"></span>Obstacle</span>
+          <span><span class="dot" style="background:var(--accent)"></span>Snake</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+<script src="snake.js" type="module"></script>
+</body>
+</html>
+
